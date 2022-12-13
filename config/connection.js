@@ -9,9 +9,19 @@ const createConnection  =() =>{
     return db
 }
 
+const closeConnection = (db) =>{
+    db.close((err) => {
+        if (err) {
+          return console.error(err.message);
+        }
+        console.log('Close the database connection.');
+    });
+}
+
 
 
 
 module.exports = {
-    createConnection
+    createConnection,
+    closeConnection
 };
