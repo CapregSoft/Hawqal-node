@@ -1,0 +1,22 @@
+{
+  "name": "hawqal-node",
+  "version": "1.0.0",
+  "description": "This package is used for retrieving information from all countries,states and cities ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CapregSoft/Hawqal-node.git"
+  },
+  "author": "Ihtisham Bashir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CapregSoft/Hawqal-node/issues"
+  },
+  "homepage": "https://github.com/CapregSoft/Hawqal-node#readme",
+  "dependencies": {
+    "sqlite3": "^5.1.4"
+  }
+}
