@@ -1,4 +1,8 @@
 const db = require('./config/connection');
+const {getAllCountries,getContryByName} = require('./controllers/countryController');
+const {getAllStates,getAllStatesByCountryName}   = require('./controllers/stateController');
+const {getAllCities,getAllCitiesByStateID}    = require('./controllers/cityController');
+
 
 const getCountries = async () =>{
     const dbConntecd = await db.createConnection();
@@ -70,9 +74,13 @@ const getCitiesfromStateName = async(stateID) =>{
     })
     await db.closeConnection(dbConnection);
 }
+
+
 module.exports = {
-    getCountries,
-    getCountiresByName,
-    getStates,
-    
+    getAllCountries,
+    getContryByName,
+    getAllStates,
+    getAllStatesByCountryName,
+    getAllCities,
+    getAllCitiesByStateID
 }

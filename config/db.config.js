@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "./../db/info.sqlite",
+    HOST: "./db/info.sqlite",
     USER: "",
     PASSWORD: "",
     DB: "info",

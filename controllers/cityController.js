@@ -4,25 +4,26 @@ const asyncAwait = require('./../utils/catchAsync');
 const cityModel = model.city;
 
 //Get all Cities 
-const getAllCities = asyncAwait(async (next)=>{
-    const getAll = await cityModel.findAll();
-    if(getAll)
-     {
-        const getSelected = getAll.map(all => all.dataValues);
-        console.log(getSelected);
-     }   
-     else
-        console.log('No states')
-})
+const getAllCities =  async()=>{
+   const getAll =  await cityModel.findAll();
+   let getCities;
+   getAll ? getCities = getAll.map(all => all.dataValues) :  getCities = 'No Cities'
+   return {
+      data: getCities
+   }
+}
 
 //Get States By Country Name
-const getAllCitiesByStateID = asyncAwait(async (stateID,next)=>{
+const getAllCitiesByStateID = async(stateID)=>{
     const getAll = await cityModel.findAll({where: {state_id: stateID}});
-    if(getAll)
-     {
-        const getSelected = getAll.map(all => all.dataValues);
-        console.log(getSelected);
-     }   
-     else
-        console.log('No states')
-})
+    let getCities;
+    getAll ? getCities = getAll.map(all => all.dataValues) :  getCities = 'No Cities'
+    return {
+      data: getCities
+   }
+}
+
+module.exports = {
+   getAllCities,
+   getAllCitiesByStateID
+}
