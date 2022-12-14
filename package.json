@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/CapregSoft/Hawqal-node#readme",
   "dependencies": {
+    "sequelize": "^6.27.0",
     "sqlite3": "^5.1.4"
   }
 }
