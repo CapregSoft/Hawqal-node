@@ -1,7 +1,7 @@
 {
-  "name": "hawqal-node",
-  "version": "1.0.0",
-  "description": "This package is used for retrieving information from all countries,states and cities ",
+  "name": "@capregsoft/hawqal",
+  "version": "0.0.1",
+  "description": "This package is used for retrieving country names their states and cities.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,5 +19,8 @@
   "dependencies": {
     "sequelize": "^6.27.0",
     "sqlite3": "^5.1.4"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
