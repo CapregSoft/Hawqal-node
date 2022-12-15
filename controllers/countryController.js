@@ -4,7 +4,7 @@ const countryModel = model.country;
 
 //get All countries
 const getAllCountries = async() =>{
-   const getAll = await countryModel.findAll({id:1})
+   const getAll = await countryModel.findAll()
    let getCountries;
    getAll ? getCountries = getAll.map(all => all.dataValues) :  getCountries = 'No Countries'
    return {

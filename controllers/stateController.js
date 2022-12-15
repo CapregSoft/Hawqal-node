@@ -4,7 +4,7 @@ const asyncAwait = require('./../utils/catchAsync');
 const stateModel = model.state;
 
 //Get all States 
-const getAllStates = async (next)=>{
+const getAllStates = async ()=>{
     const getAll = await stateModel.findAll();
     let getStates;
     getAll ? getStates = getAll.map(all => all.dataValues) : getStates ='No States'
