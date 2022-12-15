@@ -14,7 +14,7 @@ const getAllCities =  async()=>{
 }
 
 //Get States By Country Name
-const getAllCitiesByStateID = async(stateID)=>{
+const getAllCitiesByStateID = async(stateID = 0)=>{
     const getAll = await cityModel.findAll({where: {state_id: stateID}});
     let getCities;
     getAll ? getCities = getAll.map(all => all.dataValues) :  getCities = 'No Cities'

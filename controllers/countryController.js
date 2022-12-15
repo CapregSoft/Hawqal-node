@@ -12,7 +12,8 @@ const getAllCountries = async() =>{
     }
 }
 //Get country BY name
-const getContryByName = async(countryName) =>{
+const getContryByName = async(countryName = '') =>{
+
     const country = await countryModel.findOne({where:{country_name: countryName}})
     let getCountries;
     country ? getCountries = country.dataValues :  getCountries = 'No Countries'
