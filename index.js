@@ -1,4 +1,3 @@
-const db = require('./config/connection');
 const {getAllCountries,getContryByName} = require('./controllers/countryController');
 const {getAllStates,getAllStatesByCountryName}   = require('./controllers/stateController');
 const {getAllCities,getAllCitiesByStateID}    = require('./controllers/cityController');

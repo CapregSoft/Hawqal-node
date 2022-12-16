@@ -4,7 +4,8 @@
   "description": "This package is used for retrieving country names their states and cities.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "debug": "ndb test.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "dependencies": {
     "chai": "^4.3.7",
     "mocha": "^10.2.0",
+    "ndb": "^1.1.5",
     "sequelize": "^6.27.0",
     "sqlite3": "^5.1.4"
   },
