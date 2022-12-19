@@ -21,7 +21,7 @@ describe('State', async()=>{
 
 describe('City', async()=>{
     it('if fail connection return Strong (INTERNAL SERVER ERROR!!!', async()=>{
-        const getString = await cityController.getAllCities();
+        const getString = await cityController.getAllCitiesByCountryName();
         expect(getString).to.be.a('string');
         expect(getString).to.be.equal('Internal Server Error!!!');
     });

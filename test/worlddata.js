@@ -2,7 +2,6 @@ const expect = require("chai").expect;
 const countryController = require('./../controllers/countryController');
 const stateController   = require('./../controllers/stateController');
 const cityController    = require('./../controllers/cityController');
-const { count } = require("console");
 
 //Test Cases for Country Controller
 describe('Country Controller Test', ()=>{
@@ -20,12 +19,12 @@ describe('Country Controller Test', ()=>{
     })
     
       it('(Country By Name) Should find countryController By NAME', async ()=>{
-        const countryData = await countryController.getContryByName('Pakistan')
+        const countryData = await countryController.getCountryByName('Pakistan')
         expect(countryData.data).to.be.a('object');
       })
     
       it('(Country By Name) Should Get No Found  (on Wrong or may parameter less)', async ()=>{
-        const selectedCountry = await countryController.getContryByName(123);
+        const selectedCountry = await countryController.getCountryByName(123);
         expect(selectedCountry.data).to.be.a('string');
         expect(selectedCountry.data).equal('No Countries')
       })
@@ -57,16 +56,16 @@ describe('State Controller Test', ()=>{
 
 //Test Cases for City Controler
 describe('City Controller Test', ()=>{
-    it('should find all Cities', async() => {
-        const getData = await cityController.getAllCities();
-        expect(getData.data).to.be.a('array');
-        expect(getData.data.length).to.be.equal(100);
+    it('parameter less Should return No cities in msg', async() => {
+        const getData = await cityController.getAllCitiesByCountryName()
+        expect(getData).to.be.a('object');
+        expect(getData.data).equal('No Cities');
     });
 
-    it('should find all Cities with passing arguments', async() => {
-        const getData = await cityController.getAllCities('All Cities');
+    it('Should return all cities from passing an country name', async() => {
+        const getData = await cityController.getAllCitiesByCountryName('pakistan');
         expect(getData.data).to.be.a('array');
-        expect(getData.data.length).to.be.equal(100);
+        expect(getData.data.length).to.be.greaterThan(0)
     });
     
     it('(Cities By State ID) Should find Cities By ID', async ()=>{
@@ -77,8 +76,8 @@ describe('City Controller Test', ()=>{
     
     it('(Cities By State ID) Should Get No Found  (on Wrong or may parameter less)', async ()=>{
         const selectedCityies= await cityController.getAllCitiesByStateID();
-        expect(selectedCityies.data).to.be.a('array')
-        expect(selectedCityies.data.length).to.be.equal(0);
+        expect(selectedCityies).to.be.a('object')
+        expect(selectedCityies.data).to.be.equal('No Cities');
     })  
 });
 
