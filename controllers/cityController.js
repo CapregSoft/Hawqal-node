@@ -45,9 +45,11 @@ const getCitiesByStateName = async(name, countryName = null) =>{
                Getcities.push(city.name);
             }
          });
-         return Getcities;
+         return {
+          data: Getcities
+         };
       }else
-         return 'No Cities!!!'
+         return {data:'No Cities!!!'}
 
    }catch(error){
       return 'Internal Server Error!!!';
