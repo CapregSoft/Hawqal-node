@@ -8,7 +8,11 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.TEXT
         },
         state_id:{
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'state', // name of Target model
+                key: 'state_id', // key in Target model that we're referencing
+            } 
         },
         country_id:{
             type: Sequelize.INTEGER
@@ -19,7 +23,6 @@ module.exports = (sequelize, Sequelize) => {
     },{
         freezeTableName: true,
         timestamps: false
-    }
-    );
+    });
     return city;
 };

@@ -37,7 +37,9 @@ const getAllStatesByCountryName = async (countryName = '')=>{
    }
 }
 
+
+
 module.exports = {
    getAllStates,
-   getAllStatesByCountryName
+   getAllStatesByCountryName,
 }

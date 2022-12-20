@@ -39,4 +39,12 @@ db.sequelize = sequelize;
 db.country = require("./country")(sequelize, Sequelize);
 db.state   = require("./state")(sequelize, Sequelize);
 db.city    = require('./city')(sequelize, Sequelize);
+
+db.state.hasMany(db.city,{
+    foreignKey: 'state_id'
+})
+db.city.belongsTo(db.state,{
+    foreignKey: 'state_id'
+})
+
 module.exports = db
