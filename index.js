@@ -1,5 +1,5 @@
-const {getAllCountries,getCountryByName} = require('./controllers/countryController');
-const {getAllStates,getAllStatesByCountryName}   = require('./controllers/stateController');
+const {getAllCountries} = require('./controllers/countryController');
+const {getAllStatesByCountryName}   = require('./controllers/stateController');
 const {getCitiesByStateName,getAllCitiesByCountryName}    = require('./controllers/cityController');
 
 module.exports = {
