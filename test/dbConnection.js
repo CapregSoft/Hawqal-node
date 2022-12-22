@@ -4,7 +4,7 @@ const stateController   = require('./../controllers/stateController');
 const cityController    = require('./../controllers/cityController');
 
 describe('Country )', async()=>{
-    it('if fail connection return Connection Error or Successful on pass', async()=>{
+    it('if fail connection return Connection Error or Successful on pass ()', async()=>{
         const getMessage = await countryController.getAllCountries();
         if(typeof(getMessage) === 'string'){
             expect(getMessage).to.be.a('string');
