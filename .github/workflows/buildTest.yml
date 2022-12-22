@@ -10,12 +10,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 16.x
-        registry-url: 'https://registry.npmjs.org'
+        registry-url: 'https://www.npmjs.com/settings/capregsoft/packages'
     - name: Install dependencies
       run: npm install
     - name: Run tests
       run: npm test
     - name: Publish to npm 
-      run: npm publish --registry https://www.npmjs.com/settings/capregsoft/packages --tag latest
+      run: npm publish  --tag latest
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
