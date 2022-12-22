@@ -1,6 +1,6 @@
 
 ![](https://img.shields.io/node/v/@capregsoft/hawqal?style=for-the-badge)
-[![npm version](https://badge.fury.io/js/@capregsoft%2Fhawqal.svg)](https://badge.fury.io/js/@capregsoft%2Fhawqal)
+![npm version](https://img.shields.io/npm/v/@capregsoft/hawqal?style=for-the-badge)
 # Hawqal
 
 This package that contains the data of world's countries,states and their cities name

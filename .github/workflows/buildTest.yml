@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build,Test and Publish
 on: [push]
 jobs:
   build:
@@ -10,11 +10,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 16.x
+        registry-url: 'https://registry.npmjs.org'
     - name: Install dependencies
       run: npm install
     - name: Run tests
       run: npm test
     - name: Publish to npm 
+    - run: npm ci
       run: npm publish --registry https://www.npmjs.com/settings/capregsoft/packages --tag latest
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
