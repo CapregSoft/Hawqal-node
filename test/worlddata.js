@@ -69,15 +69,15 @@ describe('City Controller Test', ()=>{
     });
     
     it('(Cities By State ID) Should find Cities By ID', async ()=>{
-        const cityData = await cityController.getAllCitiesByStateID(1)
+        const cityData = await cityController.getCitiesByStateName('punjab')
         expect(cityData.data).to.be.a('array')
         expect(cityData.data.length).to.be.greaterThan(0);
     })
     
     it('(Cities By State ID) Should Get No Found  (on Wrong or may parameter less)', async ()=>{
-        const selectedCityies= await cityController.getAllCitiesByStateID();
+        const selectedCityies= await cityController.getCitiesByStateName();
         expect(selectedCityies).to.be.a('object')
-        expect(selectedCityies.data).to.be.equal('No Cities');
+        expect(selectedCityies.data).to.be.equal('No Cities!!!');
     })  
 });
 
