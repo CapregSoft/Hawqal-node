@@ -16,7 +16,6 @@ jobs:
     - name: Run tests
       run: npm test
     - name: Publish to npm 
-    - run: npm ci
       run: npm publish --registry https://www.npmjs.com/settings/capregsoft/packages --tag latest
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
