@@ -5,12 +5,12 @@ const cityController    = require('./../controllers/cityController');
 
 describe('Country )', async()=>{
     it('if fail connection return Connection Error or Successful on pass ()', async()=>{
-        const getMessage = await countryController.getAllCountries();
+        const getMessage = await countryController.getCountries();
         if(typeof(getMessage) === 'string'){
             expect(getMessage).to.be.a('string');
-            expect(getMessage).equal('Internal Server Error!!!');
+            expect(getMessage).equal('Db connection Error!!!');
         }else{
-            expect(getMessage.data).to.be.a('array');
+            expect(getMessage).to.be.a('array');
         }
     });
 });

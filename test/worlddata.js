@@ -7,78 +7,36 @@ const cityController    = require('./../controllers/cityController');
 describe('Country Controller Test', ()=>{
 
     it('should find all countries', async() => {
-        const getData = await countryController.getAllCountries();
-        expect(getData.data).to.be.a('array');
-        expect(getData.data.length).to.be.greaterThan(0);
+        const getData = await countryController.getCountries();
+        expect(getData).to.be.a('array');
+        expect(getData.length).to.be.greaterThan(0);
       });
     
     it('Should get data if some argument pass to it', async()=>{
-        const getData = await countryController.getAllCountries('qwe');
-        expect(getData.data).to.be.a('array');
-        expect(getData.data.length).to.be.greaterThan(0);
+        const getData = await countryController.getCountries('asd');
+        expect(getData).to.be.a('array');
+        expect(getData.length).to.be.greaterThan(0);
     })
-    
-      it('(Country By Name) Should find countryController By NAME', async ()=>{
-        const countryData = await countryController.getCountryByName('Pakistan')
-        expect(countryData.data).to.be.a('object');
-      })
-    
-      it('(Country By Name) Should Get No Found  (on Wrong or may parameter less)', async ()=>{
-        const selectedCountry = await countryController.getCountryByName(123);
-        expect(selectedCountry.data).to.be.a('string');
-        expect(selectedCountry.data).equal('No Countries')
-      })
 });
 //Test Cases for States Controler
 describe('State Controller Test', ()=>{
     it('Retrieve all States', async() => {
-        const states = await stateController.getAllStates();
-        expect(states.data).to.be.a('array')
+        const states = await stateController.getStates();
+        expect(states).to.be.a('array')
     });
     
     it('Should get data if some argument pass to it', async()=>{
-        const getData = await stateController.getAllStates('Pakistan')
-        expect(getData.data).to.be.a('array')
-    })
-    
-    it('(State By Country Name) Should find States By NAME', async ()=>{
-        const stateData = await stateController.getAllStatesByCountryName('Pakistan')
-        expect(stateData.data).to.be.a('array')
-        expect(stateData.data.length).to.be.equal(8)
-    })
-    
-    it('(States By Name) Should Get No Found  (on Wrong or may parameter less)', async ()=>{
-        const selectedSates= await stateController.getAllStatesByCountryName();
-        expect(selectedSates.data).to.be.a('array');
-        expect(selectedSates.data.length).to.be.equal(0);
+        const getData = await stateController.getStates('pakistan')
+        expect(getData).to.be.a('array')
     })
 });
 
 //Test Cases for City Controler
 describe('City Controller Test', ()=>{
-    it('parameter less Should return No cities in msg', async() => {
-        const getData = await cityController.getAllCitiesByCountryName()
-        expect(getData).to.be.a('object');
-        expect(getData.data).equal('No Cities');
+    it('return cities of country', async() => {
+        const getData = await cityController.getCities('pakistan')
+        expect(getData.length).to.be.greaterThan(0);
     });
-
-    it('Should return all cities from passing an country name', async() => {
-        const getData = await cityController.getAllCitiesByCountryName('pakistan');
-        expect(getData.data).to.be.a('array');
-        expect(getData.data.length).to.be.greaterThan(0)
-    });
-    
-    it('(Cities By State ID) Should find Cities By ID', async ()=>{
-        const cityData = await cityController.getCitiesByStateName('punjab')
-        expect(cityData.data).to.be.a('array')
-        expect(cityData.data.length).to.be.greaterThan(0);
-    })
-    
-    it('(Cities By State ID) Should Get No Found  (on Wrong or may parameter less)', async ()=>{
-        const selectedCityies= await cityController.getCitiesByStateName();
-        expect(selectedCityies).to.be.a('object')
-        expect(selectedCityies.data).to.be.equal('No Cities!!!');
-    })  
 });
 
 

@@ -7,119 +7,90 @@ This package that contains the data of world's countries,states and their cities
 
 ## Functionalities
 
-- Get All Countries
-- Get State By Country 
-- Get Cities By Country
-- Get Cities By State 
+- Get Countries
+- Get States 
+- Get Cities
 
 ## Installation
 ```
 npm i @capregsoft/hawqal
 ```
 ## Usage/Examples
-
-- ### All Countries
-```node
-const worldData = require('@capregsoft/hawqal')
-const getCountries = async () =>{
-    console.log(await hawqal.getAllCountries());
-}
-getCountries();
-```
 ``
 Use Asyc and await to get meaningful response
 ``
-
-## Success Response
-
-- {
-  data: [
-    { country_id: 1, country_name: 'Afghanistan' },
-    { country_id: 2, country_name: 'Aland Islands' },
-    { country_id: 3, country_name: 'Albania' },
-    { country_id: 4, country_name: 'Algeria' },
-    { country_id: 5, country_name: 'American Samoa' },
-    { country_id: 6, country_name: 'Andorra' },
-    { country_id: 7, country_name: 'Angola' }.....
-
-## Error Response
-
-- {
-    data:[]
+- ### Get Countries
+```Countries
+const worldData = require('@capregsoft/hawqal')
+const getData = async () =>{
+    console.log(await worldData.getCountries());
 }
-------------------------------------------------------------------------------------------
+getData();
+```
 - ### States By Country Name
-```node
+
+```States
 const worldData = require('@capregsoft/hawqal')
 const getStates = async () =>{
-    console.log(await worldData.getAllStatesByCountryName('pakistan'));
+    console.log(await await index.getStates('pakistan'));
 }
 getStates();
 ```
-``
-Use Asyc and await to get meaningful response
-``
 
-## Success Response
-
-- {
-  data: [
-    {
-      state_id: 3172,
-      name: 'Azad Kashmir',
-      country_id: 167,
-      country_name: 'Pakistan'
-    },
-    {
-      state_id: 3174,
-      name: 'Balochistan',
-      country_id: 167,
-      country_name: 'Pakistan'
-    },...
-
-## Error Response
-
-- {
-    data: No States
-    }
-- {
-    INTERNAL SERVER ERROR!!!
-    }
-------------------------------------------------------------------------------------------
-- ### Cities By State Name & Cities by Country Name Only
-```node
+- ### Cities
+```Cities
 const worldData = require('@capregsoft/hawqal')
 const getCities = async () =>{
-    console.log(await worldData.getCitiesByStateName('punjab'));
-}
-
-const getCitiesByCountryName = async (countryName) =>{
-    console.log(await worldData.getAllCitiesByCountryName(countryName));
+     //get all cities
+    console.log(await await index.getCities());
+    //get state cities
+    console.log(await await index.getCities('','punjab'));
+    //get country cities
+    console.log(await await index.getCities('pakistan'));
+    //get country,state cities
+    console.log(await await index.getCities('pakistan','punjab'));
 }
 getCities();
-getCitiesByCountryName('finland')
 ```
-``
-Use Asyc and await to get meaningful response
-``
+
 
 ## Success Response
-
-- {
-  data: [
-    'Abohar',          'Adampur',      'Ajitgarh',
-    'Ajnala',          'Akalgarh',     'Alawalpur',
-    'Amloh',           'Amritsar',     'Anandpur Sahib',
-    'Badhni Kalan',    'Bakloh',       'Banga',,...
-
+```
+Get Countries
+ [
+  'Afghanistan',
+  'Aland Islands',
+  'Albania',
+  'Algeria',
+  'American Samoa',
+  'Andorra',
+  'Angola',
+  'Anguilla',...
+]
+Get States
+[
+  'Azad Kashmir',
+  'Balochistan',
+  'Federally Administered Tribal Areas',
+  'Gilgit-Baltistan',
+  'Islamabad Capital Territory',
+  'Khyber Pakhtunkhwa',
+  'Punjab',
+  'Sindh'
+]
+Get Cities By States and Countries
+[
+  'Fatehgarh Sahib', 'Firozpur',     'Firozpur District',
+  'Fazilka',         'Gardhiwala',   'Garhshankar',
+  'Ghanaur',         'Giddarbaha',   'Gurdaspur',
+  'Guru Har Sahai',  'Hariana',      'Hoshiarpur',
+  'Hajipur',         'Jagraon',      'Jaito',
+]
+```
 ## Error Response
 
-- {
-    data: No Cities
-    }
-- {
-    INTERNAL SERVER ERROR!!!
-    }
+- []
+- Db connection Error!!!
 
 ## Tech Stack
 

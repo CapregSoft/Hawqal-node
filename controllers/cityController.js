@@ -1,41 +1,37 @@
-const { where } = require('sequelize');
-const country = require('../models/country');
 const model = require('./../models');
-const asyncAwait = require('./../utils/catchAsync');
 const {Op} = model.Sequelize;
 
 const cityModel = model.city;
 const stateModel = model.state;
 
-//retrieve all cities by country name
-const getAllCitiesByCountryName = async(name = '')=>{
-   try{
-      //cityModel.findAll({where: {country_name:{ $regexp: name}}});
-      const getAll = await cityModel.findAll({
-         where: {
-           country_name: {
-             [Op.like]:name
-           }
-         }
-       });
-      let getCities;
-      getAll.length>0 ? getCities = getAll.map(all => all.dataValues) :  getCities = 'No Cities'
-      return {
-         data: getCities
-      }
-   }catch(error){
-      return 'Internal Server Error!!!';
-   }
-}
 
 //states getAllBy State Name
-const getCitiesByStateName = async(name, countryName = null) =>{
+const getCities = async(country = '',state = '') =>{
    try{
-      let condition = { name:{[Op.like]: name}};
-      if(countryName !== null)
-         condition.country_name = {[Op.like]: countryName}
+      state = state || null;
+      country = country || null;
+      let quries = {}
+      if(state !== null || country !== null){
+         if(state !== null && country !== null){
+               quries = {
+                     name:{[Op.like]: state},
+                     country_name:{[Op.like]: country} 
+            }
+         }  
+         else if(state !== null ){
+            quries = {
+               name:{[Op.like]: state},
+            }
+         }
+         else{
+            quries = {
+               country_name:{[Op.like]: country} 
+            }
+         }
+         
+      }
       const cities =await stateModel.findAll({
-         where:condition,
+         where:quries,
          include: cityModel,
       });
       if(cities.length>0){
@@ -45,19 +41,17 @@ const getCitiesByStateName = async(name, countryName = null) =>{
                Getcities.push(city.name);
             }
          });
-         return {
-          data: Getcities
-         };
+         return Getcities
+         
       }else
-         return {data:'No Cities!!!'}
+         return 'No Cities!!!'
 
    }catch(error){
-      return 'Internal Server Error!!!';
+      return 'Db connection Error!!!';
    }
 
 }
 
 module.exports = {
-   getAllCitiesByCountryName,
-   getCitiesByStateName
+   getCities
 }
