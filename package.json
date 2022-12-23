@@ -1,6 +1,6 @@
 {
   "name": "@capregsoft/hawqal",
-  "version": "0.1.4",
+  "version": "0.1.4.1",
   "description": "This package is used for retrieving country names their states and cities.",
   "main": "index.js",
   "engines": {
