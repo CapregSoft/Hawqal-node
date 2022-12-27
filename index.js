@@ -1,12 +1,9 @@
-const {getAllCountries,getContryByName} = require('./controllers/countryController');
-const {getAllStates,getAllStatesByCountryName}   = require('./controllers/stateController');
-const {getAllCities,getAllCitiesByStateID}    = require('./controllers/cityController');
+const {getCountries} = require('./controllers/countryController');
+const {getStates}   = require('./controllers/stateController');
+const {getCities}    = require('./controllers/cityController');
 
 module.exports = {
-    getAllCountries,
-    getContryByName,
-    getAllStates,
-    getAllStatesByCountryName,
-    getAllCities,
-    getAllCitiesByStateID
+    getCountries,
+    getStates,
+    getCities
 }

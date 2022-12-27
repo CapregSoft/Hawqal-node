@@ -1,51 +1,57 @@
 const model = require('./../models');
-const asyncAwait = require('./../utils/catchAsync');
+const {Op} = model.Sequelize;
 
 const cityModel = model.city;
+const stateModel = model.state;
 
-//Get all Cities 
-const getAllCities =  async(offset = 1)=>{
-   const limit = 100;
-   if(typeof(offset) !== 'number')
-      offset =1
-   const skip = (offset -1) * limit;
+
+//states getAllBy State Name
+const getCities = async(country = '',state = '') =>{
    try{
-      const getAll =  await cityModel.findAll({
-         limit: limit,
-         offset: skip
+      state = state || null;
+      country = country || null;
+      let quries = {}
+      if(state !== null || country !== null){
+         if(state !== null && country !== null){
+               quries = {
+                     name:{[Op.like]: state},
+                     country_name:{[Op.like]: country} 
+            }
+         }  
+         else if(state !== null ){
+            quries = {
+               name:{[Op.like]: state},
+            }
+         }
+         else{
+            quries = {
+               country_name:{[Op.like]: country} 
+            }
+         }
+         
+      }
+      const cities =await stateModel.findAll({
+         where:quries,
+         include: cityModel,
       });
-      let getCities;
-      getAll ? getCities = getAll.map(all => all.dataValues) :  getCities = 'No Cities'
-      return {
-         data: getCities
-      }
-   }catch(error){
-      return 'Internal Server Error!!!';
-   }
-}
+      if(cities.length>0){
+         let Getcities =[]; 
+         cities.map(el => {
+            for (let city of el.dataValues.cities) {
+               Getcities.push(city.name);
+            }
+         });
+         return Getcities
+         
+      }else
+         return 'No Cities!!!'
 
-//Get States By Country Name
-const getAllCitiesByStateID = async(stateID = 0,offset = 1)=>{
-   try{
-      if(typeof(offset) !== 'number')offset = 1
-      const limit =100
-      const skip = (offset -1 ) * limit;
-      const getAll = await cityModel.findAll({where: {state_id: stateID},
-      offset:skip,
-      limit:limit
-      }
-      );
-      let getCities;
-      getAll ? getCities = getAll.map(all => all.dataValues) :  getCities = 'No Cities'
-      return {
-         data: getCities
-      }
    }catch(error){
-      return 'Internal Server Error!!!';
+      return 'Db connection Error!!!';
    }
+
 }
 
 module.exports = {
-   getAllCities,
-   getAllCitiesByStateID
+   getCities
 }

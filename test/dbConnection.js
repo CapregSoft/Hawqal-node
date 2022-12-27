@@ -4,25 +4,13 @@ const stateController   = require('./../controllers/stateController');
 const cityController    = require('./../controllers/cityController');
 
 describe('Country )', async()=>{
-    it('if fail connection return Strong (INTERNAL SERVER ERROR!!!', async()=>{
-        const getString = await countryController.getAllCountries();
-        expect(getString).to.be.a('string');
-        expect(getString).equal('Internal Server Error!!!');
-    });
-});
-
-describe('State', async()=>{
-    it('if fail connection return Strong (INTERNAL SERVER ERROR!!!', async()=>{
-        const getString = await stateController.getAllStates();
-        expect(getString).to.be.a('string');
-        expect(getString).to.be.equal('Internal Server Error!!!');
-    });
-});
-
-describe('City', async()=>{
-    it('if fail connection return Strong (INTERNAL SERVER ERROR!!!', async()=>{
-        const getString = await cityController.getAllCities();
-        expect(getString).to.be.a('string');
-        expect(getString).to.be.equal('Internal Server Error!!!');
+    it('if fail connection return Connection Error or Successful on pass ()', async()=>{
+        const getMessage = await countryController.getCountries();
+        if(typeof(getMessage) === 'string'){
+            expect(getMessage).to.be.a('string');
+            expect(getMessage).equal('Db connection Error!!!');
+        }else{
+            expect(getMessage).to.be.a('array');
+        }
     });
 });

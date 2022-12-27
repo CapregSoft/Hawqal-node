@@ -1,37 +1,31 @@
 const model = require('./../models');
-const asyncAwait = require('./../utils/catchAsync');
-
+const {Op}  = model.Sequelize;
 const stateModel = model.state;
 
 //Get all States 
-const getAllStates = async ()=>{
+const getStates = async (country = '')=>{
    try{
-      const getAll = await stateModel.findAll();
-      let getStates;
-      getAll ? getStates = getAll.map(all => all.dataValues) : getStates ='No States'
-      return {
-         data: getStates
-      }
+      country = country || null
+      console.log(country);
+      let quries = {}; 
+      if(country !== null){
+            quries= {
+               where: {
+                  country_name: {
+                     [Op.like]: country
+               }
+            }
+         }
+      }  
+      const getAll = await stateModel.findAll(quries);
+      let getStates = [];
+      for(let i=0;i<getAll.length;i++)getStates.push(getAll[i].dataValues.name)
+      return getStates;
    }catch(error){
-      return 'Internal Server Error!!!';
+      return 'Db connection Error!!!';
    }    
 }
 
-//Get States By Country Name
-const getAllStatesByCountryName = async (countryName = '')=>{
-   try{
-      const getAll = await stateModel.findAll({where: {country_name: countryName}});
-      let getStates;
-      getAll ? getStates = getAll.map(all => all.dataValues) : getStates ='No States'
-      return {
-         data: getStates
-      }
-   }catch(error){
-      return 'Internal Server Error!!!'
-   }
-}
-
 module.exports = {
-   getAllStates,
-   getAllStatesByCountryName
+   getStates
 }

@@ -1,8 +1,10 @@
+const { city } = require(".");
+
 module.exports = (sequelize, Sequelize) => {
     const state = sequelize.define("state", {
         state_id:{
             type: Sequelize.INTEGER,
-            primaryKey: true
+            primaryKey: true,
         },
         name:{
             type: Sequelize.TEXT

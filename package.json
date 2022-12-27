@@ -1,8 +1,12 @@
 {
   "name": "@capregsoft/hawqal",
-  "version": "0.0.3",
+  "version": "0.1.6",
   "description": "This package is used for retrieving country names their states and cities.",
   "main": "index.js",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.11.0"
+  },
   "scripts": {
     "test": "mocha --reporter spec",
     "debug": "ndb test.js"
@@ -26,5 +30,15 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "keywords": [
+    "capregsoft",
+    "hawqal",
+    "geo",
+    "geodata",
+    "locationdata",
+    "worlddata",
+    "countrydata",
+    "statedata"
+  ]
 }
