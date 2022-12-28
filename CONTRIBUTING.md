@@ -1,30 +1,67 @@
-# Contributing to hawqal
-We are grateful for your consideration of contributing to hawqal. We value all types of contributions, including but not limited to bug reports, feature requests, and code changes.
+# Contribution Guidelines
 
-### Code of Conduct
-We are committed to fostering a welcoming and inclusive community. Please review our Code of Conduct to understand our expectations for behavior [code of conduct](https://github.com/CapregSoft/Hawqal-node/blob/master/CODE_OF_CONDUCT.md).
+Thanks for considering contributing to Hawqal! We welcome contributions of all kinds, including bug reports, feature requests, and code contributions.
 
-### How to Contribute
-Reporting Bugs
-If you find a bug in the project, we would appreciate it if you could report it to us. Here are some tips for writing a good bug report:
+## Code of conduct
 
-Describe the problem in detail, including the steps to reproduce it.
-Include any error messages or logs that may be relevant.
-Specify the version of hawqal that you are using.
-If possible, provide a minimal test case that reproduces the issue.
-You can report bugs by opening an issue on the project's GitHub repository.
+We have a code of conduct that all contributors are expected to follow. Please make sure you read and understand it before making any contributions. You can find it here: [CODE_OF_CONDUCT.md](https://github.com/CapregSoft/Hawqal-node/blob/contributing/CODE_OF_CONDUCT.md)
 
-### Requesting Features
-If you have an idea for a new feature that you would like to see added to hawqal, we would love to hear about it! To request a new feature, please open an issue on the project's GitHub repository and describe your idea.
+## Reporting bugs or issues
 
-### Submitting Code Changes
-If you would like to contribute code changes to the project, we welcome pull requests. Here are some guidelines for submitting code changes:
+If you find a bug or issue while using Hawqal, please do the following:
 
-### Follow the project's coding style and conventions.
-Write tests for your code changes.
-Make sure that the code builds and the tests pass on your machine before submitting the pull request.
-Include a clear and concise description of the changes in the pull request.
-If your pull request fixes a bug or implements a new feature, please include a description of the problem and the solution in the pull request.
-### Contact
-If you have any questions about contributing to hawqal, please don't hesitate to contact us. You can find us on our project's GitHub repository, or you can reach us at info@hawqal.com.
+- Search the existing issues to see if it has already been reported.
+- If it has not been reported, create a new [issue](https://github.com/CapregSoft/Hawqal-node/issues/new) and include as much detail as possible, including steps to reproduce the issue.
+- If you are able to provide a fix for the issue, please also include details on how you fixed it.
 
+## Requesting Features
+
+- If you have an idea for a new feature that you'd like to see in Hawqal, please [open an issue](https://github.com/CapregSoft/Hawqal-node/issues/new) and describe the feature. If possible, please include details about how the feature would be used and any potential benefits.
+
+## How to contribute
+
+We welcome code contributions of all kinds! If you'd like to contribute code to Hawqal.
+
+- [Fork the repository](https://github.com/CapregSoft/Hawqal-node/fork).
+- Create a new branch for your changes.
+- Make your changes and commit them to your branch.
+- [Create a pull request](https://github.com/CapregSoft/Hawqal-node/compare).
+
+## Commit Message Conventions
+
+- We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format for commit messages. Please make sure to follow this format when committing code.
+
+## Code Review and Testing
+
+- All pull requests should be reviewed by at least one member of the Hawqal team or by collaborators before they merge into the master.
+
+## Suggesting new features or enhancements
+
+We welcome suggestions for new features and enhancements to Hawqal. To make a suggestion, please do the following:
+
+- Search the existing issues to see if it has already been suggested.
+- If it has not been suggested, [create a new issue](https://github.com/CapregSoft/Hawqal-node/issues/new) and include as much detail as possible about the feature or enhancement you are suggesting.
+
+## Writing or improving documentation
+
+Improving documentation is a great way to contribute to Hawqal. If you see an opportunity to improve the documentation, please feel free to make the changes and submit a pull request.
+
+## Submitting code changes or patches
+
+If you would like to submit code changes or patches to Hawqal, please do the following:
+
+- Fork the repository and create a new branch for your changes.
+- Make your changes, including tests if applicable.
+- Ensure that your code passes all tests and follows the coding style guidelines.
+- Submit a pull request from your fork to the main repository.
+- Your pull request will be reviewed by one of the maintainers. If there are any issues, they will be addressed and you may be asked to make additional changes.
+
+## License
+
+By contributing to Hawqal, you agree to license your contributions under the [LICENSE](https://github.com/CapregSoft/Hawqal-node/blob/contributing/LICENSE) file.
+
+## To run the test cases
+
+```bash
+npm test
+```
