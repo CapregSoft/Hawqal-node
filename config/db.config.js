@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-    HOST: path.join(__dirname,'./../db/info.sqlite'),
+    HOST: path.join(__dirname,'./../db/hawqalDB.sqlite'),
     USER: "",
     PASSWORD: "",
     DB: "info",

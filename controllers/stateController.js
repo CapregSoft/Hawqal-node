@@ -6,7 +6,6 @@ const stateModel = model.state;
 const getStates = async (country = '')=>{
    try{
       country = country || null
-      console.log(country);
       let quries = {}; 
       if(country !== null){
             quries= {
