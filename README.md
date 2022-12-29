@@ -24,7 +24,7 @@ For more information, additional examples and functionality, see the [Hawqal Doc
 - [Capregsoft](https://www.github.com/capregsoft)
 - [Ihtisham Bashir](https://www.github.com/ihtisham007)
 ## Additional Resources
-- [Changelog](https://github.com/CapregSoft/Hawqal-node/blob/master/CHANGELOG.md)
+- [Changelog](https://github.com/CapregSoft/Hawqal-node/blob/update-readme/CHANGELOG.md)
 - [Code of Conduct](https://github.com/CapregSoft/Hawqal-node/blob/master/CODE_OF_CONDUCT.md)
 - [Collaborator Guide](https://github.com/CapregSoft/Hawqal-node/blob/master/COLLABORATOR_GUIDE.md)
 - [Contribution Guidelines](https://github.com/CapregSoft/Hawqal-node/blob/master/CONTRIBUTING.md)
