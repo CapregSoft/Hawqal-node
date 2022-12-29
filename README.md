@@ -12,14 +12,14 @@ This package that contains the data of world's countries,states and their cities
 - Get Cities
 
 ## Get Started
-To install the Hawqal-go package, use the following command:
-```golang
-go get github.com/CapregSoft/Hawqal-node
+To install the Hawqal-node package, use the following command:
+```nodejs
+npm i @capregsoft/hawqal
 ```
 ## Features/Example
 For more information, additional examples and functionality, see the [Hawqal Docummentation](https://hawqal.capregsoft.com).
 ## Language
-- Golang 1.18
+- NODE 16.x
 ## Authors
 - [Capregsoft](https://www.github.com/capregsoft)
 - [Ihtisham Bashir](https://www.github.com/ihtisham007)
