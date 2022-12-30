@@ -2,6 +2,11 @@ const model = require('./../models');
 const {Op}  = model.Sequelize;
 const stateModel = model.state;
 
+/**
+ * Get States takes two optional parameters:
+  - country: a string representing the name of the country to search for. An empty string or null will return all countries.
+  - filters: an object containing boolean values that indicate which fields to include in the returned list of countries.
+**/
 //Get all States 
 const getStates = async (country = '',filter = {coordinates: false, country: false})=>{
    try{
@@ -22,9 +27,10 @@ const getStates = async (country = '',filter = {coordinates: false, country: fal
          country = country || null
          
      }
+     quries['attributes'] = ['state_name']
       if(filter !== null){
          const getFields =  filterFields(filter);
-         getFields.length > 0 ? quries['attributes'] = getFields : '';
+         getFields.length > 0 ? quries['attributes'] = quries['attributes'].concat(getFields) : '';
       }
       const getAll = await stateModel.findAll(quries);
       let getStates = [];
