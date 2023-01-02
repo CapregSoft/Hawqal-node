@@ -19,10 +19,6 @@ module.exports = (sequelize, Sequelize) => {
     },{
         freezeTableName: true,
         timestamps: false,
-        attributes: {
-            exclude: ['state_id']
-        }
-        
     });
     return state;
 };

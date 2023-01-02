@@ -9,6 +9,11 @@ const countryModel = model.country;
 **/
 const getCountries = async(name = '',filters ={coordinates: false,region:false,currency:false,timezone:false,capital:false}) =>{
     try{
+        if(typeof filters === typeof ''){
+            const temp = filters
+            filters = name
+            name = temp
+        }
         let search = {}
         name = name || null
         if(typeof name === 'object'){

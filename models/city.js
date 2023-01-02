@@ -1,25 +1,27 @@
 module.exports = (sequelize, Sequelize) => {
-    const city = sequelize.define("city", {
+    const city = sequelize.define("cities", {
         city_id:{
             type: Sequelize.INTEGER,
             primaryKey: true
         },
-        name:{
+        city_name:{
+            type: Sequelize.TEXT
+        },
+        state_name:{
             type: Sequelize.TEXT
         },
         state_id:{
             type: Sequelize.INTEGER,
-            references: {
-                model: 'state', // name of Target model
-                key: 'state_id', // key in Target model that we're referencing
-            } 
-        },
-        country_id:{
-            type: Sequelize.INTEGER
         },
         country_name:{
             type: Sequelize.TEXT
         },
+        latitude:{
+            type: Sequelize.TEXT
+        },
+        longitude:{
+            type: Sequelize.TEXT
+        }
     },{
         freezeTableName: true,
         timestamps: false
