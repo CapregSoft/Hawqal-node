@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "mocha --reporter spec",
-    "debug": "ndb test.js"
+    "debug": "ndb index.js"
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,16 @@ const cityModel = model.city;
 //states getAllBy State Name
 const getCities = async(country = '',state = '',filter = {coordinates: false,country:false,state:false}) =>{
    try{
-      debugger;
+      if(typeof country === typeof {} || typeof state === typeof {}){
+         if(typeof country === typeof {}){
+            filter = country
+            country = ''
+         }
+         if (typeof state === typeof {}){
+            filter = state
+            state = '';
+         }
+      }
       state = state || null;
       country = country || null;
       let quries = {}
@@ -20,21 +29,19 @@ const getCities = async(country = '',state = '',filter = {coordinates: false,cou
                      country_name:{[Op.like]: country} 
                   }
                }
-         }  
-         else if(state !== null ){
-            quries = {
-               where:{
-               state_name:{[Op.like]: state}
-               }
-            }
-         }
+         } 
          else{
+            let search;
+            country !== null ? search = country : search = state
             quries = {
-               where:{
-                  country_name:{[Op.like]: country} 
+               where: {
+                  [Op.or] : [
+                     {country_name:{[Op.like]: search}},
+                     {state_name:{[Op.like]: search}}
+                  ]
                }
             }
-         }
+         } 
          
       }
       quries['attributes'] = ['city_name']
