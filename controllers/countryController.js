@@ -48,7 +48,7 @@ const getCountries = async(name = '',filters ={coordinates: false,region:false,c
 
 //Filter Fields
 const filterFields = (filters)=>{
-    let keyArrtibutes = {coordinates: ['latitude','longitude'],region:['region','subregion'],currency:['currency','currency_symbol','currency_name'],timezone:['timezone','zone_city','UTC'],capital:['country_domain','phone_code','iso_code']}
+    let keyArrtibutes = {coordinates: ['latitude','longitude'],region:['region','subregion','country_domain'],currency:['currency','currency_symbol','currency_name'],timezone:['timezone','zone_city','UTC'],capital:['capital','phone_code','iso_code']}
     let concludeArray = []
     for (let [key, value] of Object.entries(filters)) {
     if(value && key in keyArrtibutes)
