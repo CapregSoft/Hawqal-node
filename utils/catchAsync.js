@@ -7,7 +7,7 @@
  * **/
 
 module.exports = fn => {
-    return (next) => {
-        fn(next).catch(next);
+    return () => {
+        fn().catch();
     }
 }
