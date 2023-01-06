@@ -34,8 +34,8 @@ describe('State Controller Test', ()=>{
 //Test Cases for City Controler
 describe('City Controller Test', ()=>{
     it('return cities of country', async() => {
-        const getData = await cityController.getCities('pakistan')
-        expect(getData.length).to.be.greaterThan(0);
+        const getData = await cityController.getCity('islamabad')
+        expect(getData.length).to.be.greaterThan(0)
     });
 });
 

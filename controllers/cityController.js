@@ -49,7 +49,7 @@ const getCities = async(country = '',state = '',filter = cityFilter) =>{
       // Create a search query object based on the provided country and state names
       let searchingQueries = createSearchingQuery(country,state);
       // Add the field filter to the search query
-      searchingQueries['attributes'] =filterFields(filter);
+      searchingQueries['attributes'] =filterFields(filter,'city');
       // Retrieve the cities from the database
       const cities = await cityModel.findAll(searchingQueries);
       // Return the array of city objects, or a message indicating that no cities were found
