@@ -1,61 +1,60 @@
 const model = require('./../models');
-const {Op} = model.Sequelize;
+const  {countryFilter} = require('./../models/filters');
+const {filterFields,capitalizeString} = require('./../utils/filteration');
+
 const countryModel = model.country;
 
 /**
- * Get Countries takes two optional parameters:
-  - name: a string representing the name of the country to search for. An empty string or null will return all countries.
-  - filters: an object containing boolean values that indicate which fields to include in the returned list of countries.
-**/
-const getCountries = async(name = '',filters ={coordinates: false,region:false,currency:false,timezone:false,capital:false}) =>{
+ * Asynchronously retrieves a country from the database based on the specified country name and filters.
+ * @param {string} country - The name of the country to retrieve.
+ * @param {Object} [filter=countryFilter] - An object containing field names to include in the result.
+ * @returns {(Object[]|string)} An array of country objects, or a string indicating that no country was found or that an error occurred.
+ */
+
+const getCountry = async(country,filter=countryFilter) =>{
+    try {
+        //if country not define then return msg 
+        if(!country) return 'country name must be define'
+        //if country is define capitalize it or set null
+        country = capitalizeString(country) || null
+        //search query set where condition and attributes
+        const searchQuery = {
+            where:{country_name: country},
+            attributes: filterFields(filter,'country')
+        }
+        //get country from country model by searchquery
+        const getCountry = await countryModel.findAll(searchQuery);
+
+        return getCountry.length>0 ? getCountry.map(country => country.dataValues) : 'no country found'
+
+    } catch (error) {
+        return error
+    }
+}
+
+/**
+ * Asynchronously retrieves a list of countries from the database, filtered by the specified fields.
+ * @param {Object} [filter=countryFilter] - An object containing field names to include in the result.
+ * @returns {(Object[]|string)} An array of country objects, or an empty string if no countries were found or if an error occurred.
+ */
+
+const getCountries = async(filter = countryFilter) =>{
     try{
-        if(typeof filters === typeof ''){
-            const temp = filters
-            filters = name
-            name = temp
-        }
-        let search = {}
-        name = name || null
-        if(typeof name === 'object'){
-            filters = name
-            name = '';
-            name = name || null
-            
-        }
+       //set only atttributes fields for countries as provided in filter 
+       const searchQuery ={
+            attributes: filterFields(filter,'country')
+       } 
+       //get countries from country model 
+       const getCountries = await countryModel.findAll(searchQuery);
+
+       return getCountries.length >0 ? getCountries.map(country => country.dataValues) : ''
        
-        name !== null ? search = {where:{country_name: {[Op.like]: name}}} : ''
-
-        search['attributes'] = ['country_name'];
-        if(filters !== null){
-            const getFields =  filterFields(filters);
-            getFields.length > 0 ? search['attributes'] = search['attributes'].concat(getFields): '';
-        }
-       
-            
-
-        const country = await countryModel.findAll(search)
-
-        let getCountries = [];
-        for(let i=0;i<country.length;+i++)getCountries.push(country[i].dataValues);
-        getCountries.length === 0 ? getCountries.push('No Countries'): ''
-
-        return getCountries;
     }catch(error){
-        return 'Db connection Error!!!'
+        return error
     }
 }
 
-
-//Filter Fields
-const filterFields = (filters)=>{
-    let keyArrtibutes = {coordinates: ['latitude','longitude'],region:['region','subregion','country_domain'],currency:['currency','currency_symbol','currency_name'],timezone:['timezone','zone_city','UTC'],capital:['capital','phone_code','iso_code']}
-    let concludeArray = []
-    for (let [key, value] of Object.entries(filters)) {
-    if(value && key in keyArrtibutes)
-        concludeArray= concludeArray.concat(keyArrtibutes[key]) 
-    }
-    return concludeArray;
-}
 module.exports = {
+    getCountry,
     getCountries
 }
