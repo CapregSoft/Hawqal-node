@@ -5,10 +5,11 @@ exports.capitalizeString = (string) => string.replace(/\b[a-z]/g, char => char.t
 exports.filterFields  = (filter,table) =>{
 
     let fields = getFieldsArrayOfTable(table);
+    let getFields = [];
     for(let [key,value] of Object.entries(filter)) {
-        !value && fields.filter(el => el === key).length>0 ? 
-        fields = fields.filter((fields) => fields !== key) : ''
+        value && fields.filter(el => el === key).length>0 ? getFields.push(key) : ''
     };
+    getFields.length>0 ? fields = getFields : fields
     return fields;
 }
 
